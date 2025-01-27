@@ -1,0 +1,67 @@
+import csv
+import numpy as np
+import matplotlib
+from matplotlib import pyplot as plt
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from tensorflow import keras
+from tensorflow.keras import layers
+from mpl_toolkits.mplot3d import Axes3D
+
+# Open the CSV file
+with open(r'C:\Users\jcvis\Downloads\Life-Expectancy-Data-Averaged.csv', mode='r', newline='') as csvfile:
+    csvreader = csv.reader(csvfile)
+
+    # Read the header (if there is one)
+    header = next(csvreader)
+    print("Header:", header)
+    
+    
+    
+    # Read the rows
+  
+age = []
+countries = []
+population = []
+Infant_deaths = []
+Under_five_deaths = []           
+Adult_mortality = []          
+Alcohol_consumption = []        
+Hepatitis_B = []
+Measles = []
+BMI = []  
+Polio = []
+Diphtheria = []  
+Incidents_HIV = []
+GDP_per_capita = []
+Thinness_ten_nineteen_years = []
+Thinness_five_nine_years = []
+Schooling = []
+Economy_status = []
+Region = []
+    
+for row in csvreader:
+       age.append(float(row[-1]))
+       countries.append(row[0])
+       Region.append(row[1])
+       Infant_deaths.append(row[3])
+       Under_five_deaths.append(row[4])
+       Adult_mortality.append(row[5])
+       Alcohol_consumption.append(row[6])
+       Hepatitis_B.append(row[7])
+       Measles.append(row[8])
+       BMI.append(row[9])
+       Polio.append(row[10])
+       Diphtheria.append(row[11])
+       Incidents_HIV.append(row[12])
+       GDP_per_capita.append(row[13])
+       Thinness_ten_nineteen_years.append(row[15])
+       Thinness_five_nine_years.append(row[16])
+       Schooling.append(row[17])
+       Economy_status.append(row[18])
+       
+try:
+            population.append(int(float(row[-6])))  # Convert to float first, then to int
+except ValueError as e:
+            print(f"Error converting population for {row[-6]}: {e}")
